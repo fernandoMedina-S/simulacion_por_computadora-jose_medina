@@ -1,7 +1,7 @@
 
-# Practica 02 LowPoly (Diorama) 
+# Practica 04 Simulación Colisión 
 
-En esta actividad se desarrolla un diorama en low poly
+Crea una simulación de colisión basado en bajos polígonos usando un programa de modelado 3D
 
 
 
