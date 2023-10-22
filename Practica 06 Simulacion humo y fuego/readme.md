@@ -8,6 +8,6 @@ En esta actividad se desarrolla un diorama en low poly
 
 ## Capturas
 
-![App Screenshot](./Capturas/Area.PNG)
+![App Screenshot](./Capturas/area.png)
 
 ![App Screenshot](./Capturas/final.png)
