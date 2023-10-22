@@ -1,13 +1,13 @@
 
-# Practica 02 LowPoly (Diorama) 
+# Practica 05  Simulación liquido
 
-En esta actividad se desarrolla un diorama en low poly
+Crea una simulación de líquidos en bajos polígonos usando un programa de modelado 3D
 
 
 
 
 ## Capturas
 
-![App Screenshot](./Capturas/Area.PNG)
+![App Screenshot](./Capturas/area.png)
 
 ![App Screenshot](./Capturas/final.png)
