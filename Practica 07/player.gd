@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
 var movement_speed = 200.0
-var hp = 80
+var max_hp = 10
+var hp = max_hp
+var time = 0
 var spear = preload("res://Weapons/spear.tscn")
 
 @onready var spearTimer = get_node("%SpearTimer")
 @onready var spearAttackTimer = get_node("%SpearAttackTimer")
+@onready var healthBar = get_node("%HealthBar")
+@onready var labelTimer = get_node("%LabelTimer")
 
 var spear_ammo = 0
 var spear_base_ammo = 1
@@ -18,6 +22,7 @@ var enemy_close = []
 
 func _ready():
 	attack()
+	_on_hurt_box_hurt(0,0,0)
 
 func _physics_process(delta):
 	movement()
@@ -35,7 +40,9 @@ func movement():
 
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
+	healthBar.max_value = max_hp
 	hp -= damage
+	healthBar.value = hp
 	print(hp)
 
 func attack():
@@ -77,3 +84,13 @@ func _on_enemy_detection_area_body_entered(body):
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+
+func change_time(arg_time = 0):
+	time = arg_time
+	var get_m = int(time / 60.0)
+	var get_s = time % 60
+	if get_m < 10:
+		get_m = str(0, get_m)
+	if get_s < 10:
+		get_s = str(0, get_s)
+	labelTimer.text = str(get_m,":",get_s)

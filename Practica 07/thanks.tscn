@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://k0df8knluvaj"]
+
+[ext_resource type="Script" path="res://thanks.gd" id="1_52btm"]
+[ext_resource type="Texture2D" uid="uid://jitwru2cucuj" path="res://Menu/Clouds 3/1.png" id="2_y17k4"]
+[ext_resource type="Script" path="res://ParallaxLayerEffect.gd" id="3_g2o1o"]
+[ext_resource type="Texture2D" uid="uid://ct3ulacvc35xo" path="res://Menu/Clouds 3/3.png" id="4_3ktrc"]
+[ext_resource type="Script" path="res://ParallaxLayer3.gd" id="5_su28n"]
+[ext_resource type="Texture2D" uid="uid://cfn6s4xjhcdsk" path="res://Menu/Clouds 3/4.png" id="6_hxhjh"]
+[ext_resource type="Texture2D" uid="uid://c54bqtlm378ha" path="res://Menu/Church.png" id="7_8jmwc"]
+[ext_resource type="AudioStream" uid="uid://cxwkgh7gffbc3" path="res://Music/Menu.wav" id="8_swtja"]
+[ext_resource type="FontFile" uid="uid://dqi334g6av4g1" path="res://Fonts/Retro Gaming.ttf" id="9_mmo3k"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_52btm")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(577.111, 324.5)
+scale = Vector2(1.99691, 1.99691)
+texture = ExtResource("2_y17k4")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+script = ExtResource("3_g2o1o")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(574, 358)
+scale = Vector2(1.99653, 1)
+texture = ExtResource("4_3ktrc")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+script = ExtResource("5_su28n")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(574, 403)
+scale = Vector2(2.00174, 1)
+texture = ExtResource("6_hxhjh")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(561, 311)
+scale = Vector2(2.51953, 1.33203)
+texture = ExtResource("7_8jmwc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_swtja")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 166.0
+offset_right = 1083.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("9_mmo3k")
+theme_override_font_sizes/font_size = 39
+text = "Guerra Santa
+Alumno: Medina Sandoval José Fernando
+jose.medina5061@alumnos.udg.mx
+Simulación por computadora
+12/11/2023"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 7.0
+offset_top = 577.0
+offset_right = 179.0
+offset_bottom = 643.0
+
+[node name="Creditos" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_mmo3k")
+text = "VOLVER"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]

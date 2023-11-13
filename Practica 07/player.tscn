@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://h785clbmi3ek"]
+[gd_scene load_steps=10 format=3 uid="uid://h785clbmi3ek"]
 
 [ext_resource type="Texture2D" uid="uid://br2hfajowkx6b" path="res://Chacters/char_04.png" id="1_67u1k"]
 [ext_resource type="Script" path="res://player.gd" id="1_ujji5"]
 [ext_resource type="PackedScene" uid="uid://bb10yrrxefow8" path="res://Utils/hurt_box.tscn" id="3_qcfsk"]
+[ext_resource type="Texture2D" uid="uid://ciih6k267e6kh" path="res://healthbar.png" id="4_s0ejr"]
+[ext_resource type="Texture2D" uid="uid://dl3demm2k3um0" path="res://health.png" id="5_gvymg"]
+[ext_resource type="FontFile" uid="uid://dqi334g6av4g1" path="res://Fonts/Retro Gaming.ttf" id="6_xdr6r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ame6"]
 radius = 14.0
@@ -56,6 +59,40 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_dkgff")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D"]
+
+[node name="Control" type="Control" parent="CharacterBody2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="CharacterBody2D/CanvasLayer/Control"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.392157)
+z_index = 2
+layout_mode = 0
+offset_left = 560.0
+offset_top = 349.0
+offset_right = 592.0
+offset_bottom = 357.0
+value = 50.0
+texture_over = ExtResource("4_s0ejr")
+texture_progress = ExtResource("5_gvymg")
+
+[node name="LabelTimer" type="Label" parent="CharacterBody2D/CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 537.0
+offset_top = 39.0
+offset_right = 617.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("6_xdr6r")
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="hurt" from="CharacterBody2D/HurtBox" to="CharacterBody2D" method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="CharacterBody2D/Attack/SpearTimer" to="CharacterBody2D" method="_on_spear_timer_timeout"]
