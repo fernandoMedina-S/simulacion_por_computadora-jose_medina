@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bynwlpejmie0m"]
+
+[ext_resource type="Script" path="res://Weapons/spear.gd" id="1_b8n3q"]
+[ext_resource type="Texture2D" uid="uid://cm4reqptow4xq" path="res://Weapons/Spear.png" id="2_clg8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbjmw"]
+size = Vector2(59.397, 29.6985)
+
+[node name="Spear" type="Area2D" groups=["attack"]]
+top_level = true
+z_index = 1
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_b8n3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.500001, -0.500001)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_qbjmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_clg8r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

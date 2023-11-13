@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://cku2xpi1rejgj"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_32vpk"]
+[ext_resource type="Texture2D" uid="uid://jitwru2cucuj" path="res://Menu/Clouds 3/1.png" id="1_u15mc"]
+[ext_resource type="Script" path="res://ParallaxLayerEffect.gd" id="2_en153"]
+[ext_resource type="Texture2D" uid="uid://ct3ulacvc35xo" path="res://Menu/Clouds 3/3.png" id="2_ksflv"]
+[ext_resource type="Texture2D" uid="uid://cfn6s4xjhcdsk" path="res://Menu/Clouds 3/4.png" id="3_bmm2x"]
+[ext_resource type="Texture2D" uid="uid://c54bqtlm378ha" path="res://Menu/Church.png" id="4_de8k3"]
+[ext_resource type="Script" path="res://ParallaxLayer3.gd" id="4_yhi4r"]
+[ext_resource type="Texture2D" uid="uid://c1vjt6pok2gpb" path="res://Menu/title.png" id="5_6iein"]
+[ext_resource type="FontFile" uid="uid://dqi334g6av4g1" path="res://Fonts/Retro Gaming.ttf" id="6_s7ejw"]
+[ext_resource type="AudioStream" uid="uid://cxwkgh7gffbc3" path="res://Music/Menu.wav" id="9_7vc4w"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_32vpk")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(577.111, 324.5)
+scale = Vector2(1.99691, 1.99691)
+texture = ExtResource("1_u15mc")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+script = ExtResource("2_en153")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(574, 358)
+scale = Vector2(1.99653, 1)
+texture = ExtResource("2_ksflv")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+script = ExtResource("4_yhi4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(574, 403)
+scale = Vector2(2.00174, 1)
+texture = ExtResource("3_bmm2x")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(561, 311)
+scale = Vector2(2.51953, 1.33203)
+texture = ExtResource("4_de8k3")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(581, 288)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_6iein")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 51.0
+offset_top = 536.0
+offset_right = 227.0
+offset_bottom = 613.0
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.803922, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_s7ejw")
+text = "JUGAR"
+flat = true
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.803922, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_s7ejw")
+text = "SALIR"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_7vc4w")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
